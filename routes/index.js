@@ -1,7 +1,7 @@
-var express = require('express');
-var router = express.Router();
-var passport = require("passport");
-var User = require("../models/user");
+var express =require('express');
+var router =express.Router();
+var passport =require("passport");
+var user =require("../models/user.js");
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -14,9 +14,8 @@ res.render('register')
 
 
 router.post('/register', function(req,res){
-console.log(req.body.username)
-var newuser =new User({username: req.body.username})
-User.register(newuser, req.body.password, function (err, user) {
+ var newUser= new user({ username: req.body.username })
+user.register(newUser, req.body.password, function (err, user){
    if (err) {
      console.log(err);
      return res.send('hubo un error durante el registro');
