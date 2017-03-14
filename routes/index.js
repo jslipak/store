@@ -15,7 +15,8 @@ res.render('register')
 
 router.post('/register', function(req,res){
 console.log(req.body.username)
-User.register({username: req.body.username}, req.body.password, function (err, user) {
+var newuser = new User ({username: req.body.username})
+User.register(newuser, req.body.password, function (err, user) {
    if (err) {
      console.log(err);
      return res.send('hubo un error durante el registro');
