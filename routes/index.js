@@ -15,7 +15,7 @@ res.render('register')
 
 router.post('/register', function(req,res){
 console.log(req.body.username)
-var newuser = new User({username: req.body.username})
+var newuser =new User({username: req.body.username})
 User.register(newuser, req.body.password, function (err, user) {
    if (err) {
      console.log(err);
