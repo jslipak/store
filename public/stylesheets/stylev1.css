@@ -1,0 +1,21 @@
+
+
+.col-md-3.col-xs-4 {
+    margin: 15px 22px;
+    border: 1px solid black;
+    width: 240px;
+    height: 400px;
+    text-align: center;
+    /
+}
+
+p img {
+    margin: 10px;
+    height: 230px;
+    width: 160px;
+}
+
+.izq_text {
+    text-align: left;
+    font-size: small;
+}
