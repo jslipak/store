@@ -24,4 +24,8 @@ user.register(newUser, req.body.password, function (err, user){
  });
 });
 
+router.get ("/login",function(req,res){
+  res.render("login")
+})
+
 module.exports = router;
