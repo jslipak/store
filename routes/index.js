@@ -1,7 +1,7 @@
 var express =require('express');
 var router =express.Router();
 var passport =require("passport");
-var LocalStrategy = require('passport-local').Strategy;
+var LocalStrategy = require('passport-local').Strategy; //lo puse porque lo vi en stack OverFlow
 var user =require("../models/user");
 
 /* GET home page. */
