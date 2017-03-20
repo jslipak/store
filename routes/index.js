@@ -1,7 +1,8 @@
 var express =require('express');
 var router =express.Router();
 var passport =require("passport");
-var user =require("../models/user.js");
+var LocalStrategy = require('passport-local').Strategy;
+var user =require("../models/user");
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -24,8 +25,15 @@ user.register(newUser, req.body.password, function (err, user){
  });
 });
 
-router.get ("/login",function(req,res){
-  res.render("login")
+router.get('/login',function(req , res){
+  res.render('login')
 })
+
+router.post("/login",passport.authenticate("local",{
+    failureRedirect:"/login",
+        }),function(req,res){
+      console.log('logueado');
+      res.redir(200);
+    })
 
 module.exports = router;
