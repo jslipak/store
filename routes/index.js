@@ -13,8 +13,9 @@ router.get('/register' ,function(req,res,next){
 res.render('register')
 })
 
-
 router.post('/register', function(req,res){
+console.log(req.body.username) //esto anda el parser
+console.log(req.body.password) // anda
 var newUser= new User({ username: req.body.username })
 User.register(newUser, req.body.password, function (err, User){
    if (err) {
@@ -24,6 +25,10 @@ User.register(newUser, req.body.password, function (err, User){
    res.send('Se creó el usuario ' + User.username);
  });
 });
+
+
+
+
 
 router.get('/login',function(req , res){
   res.render('login')

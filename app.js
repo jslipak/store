@@ -11,8 +11,8 @@ var bodyParser= require("body-parser");
 var index = require('./routes/index');
 var products = require('./routes/products');
 var comments = require('./routes/comments');
-
 var app = express();
+mongoose.connect("mongodb://localhost/store2")
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -22,7 +22,6 @@ app.set('view engine', 'ejs');
 
 app.use(passport.initialize());
 app.use(passport.session());
-// mongoose.Promise = global.Promise;==>lo busque para solucionar algo pero no
 
 // Todas estas funciones nos las da el plugin de Mongoose. Acá las conectamos con Passport
 passport.use(new localStrategy(Users.authenticate('local'))); // Aca creamos la estragegia
