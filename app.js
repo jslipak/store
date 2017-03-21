@@ -4,21 +4,32 @@ var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
-bodyParser= require("body-parser");
-
+var passport = require("passport")
+var localStrategy = require("passport-local");
+var Users = require("./models/user");
+var bodyParser= require("body-parser");
 var index = require('./routes/index');
-// var users = require('./routes/users');
-var products = require('./routes/products')
-var comments = require('./routes/comments')
+var products = require('./routes/products');
+var comments = require('./routes/comments');
 
 var app = express();
-
-//coneccion a la base de datos
-mongoose.connect('mongodb://localhost/store');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
+
+//passportConfigurate
+
+app.use(passport.initialize());
+app.use(passport.session());
+// mongoose.Promise = global.Promise;==>lo busque para solucionar algo pero no
+
+// Todas estas funciones nos las da el plugin de Mongoose. Acá las conectamos con Passport
+passport.use(new localStrategy(Users.authenticate('local'))); // Aca creamos la estragegia
+
+// La funcion authenticate() devuelve datos del usuario si es un usuario autenticado y false si no.
+passport.serializeUser(Users.serializeUser()); // Función que guarda los datos en la db de sesiones.
+passport.deserializeUser(Users.deserializeUser()); // Función que recupera los datos de la db de sesiones.
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -50,7 +61,6 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
-
 
 
 

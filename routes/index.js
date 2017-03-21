@@ -30,10 +30,11 @@ router.get('/login',function(req , res){
 })
 
 router.post("/login",passport.authenticate("local",{
-    failureRedirect:"/login",
-        }),function(req,res){
+    //successRedirect:"/products",
+    failureRedirect:"/register",
+    }),function(res,req){
       console.log('logueado');
-      res.redir(200);
+      req.redirect("/");
     })
 
 module.exports = router;
