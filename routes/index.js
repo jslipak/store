@@ -27,10 +27,6 @@ User.register(newUser, req.body.password, function (err, User){
  });
 });
 
-
-
-
-
 router.get('/login',function(req , res){
   res.render('login')
 })
@@ -39,7 +35,7 @@ router.post("/login",passport.authenticate("local",{
     //successRedirect:"/products",
     failureRedirect:"/register",
     }),function(res,req){
-      console.log(req.user);
+      console.log(res.locals);
       req.redirect("/");
     })
 
