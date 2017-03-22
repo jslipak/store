@@ -4,6 +4,7 @@ var passport =require("passport");
 var LocalStrategy = require('passport-local').Strategy; //lo puse porque lo vi en stack OverFlow
 var User =require("../models/user");
 var app = require("../app.js")
+var bodyParser= require("body-parser")
 /* GET home page. */
 router.get('/', function(req, res, next) {
 res.render('index', { title: 'Express' });
@@ -38,7 +39,7 @@ router.post("/login",passport.authenticate("local",{
     //successRedirect:"/products",
     failureRedirect:"/register",
     }),function(res,req){
-      console.log(req.username);
+      console.log(req.user);
       req.redirect("/");
     })
 
