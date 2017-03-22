@@ -19,6 +19,11 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 //passportConfigurate
+app.use(require("express-session")({
+   secret:"ksdjflskf sfsdjfdsk fjds fdsñkf jñsflk sñfl skdfjsdfñlkjsf dsafds afsfj",
+   resave: false,
+   saveUninitialized: false
+ }))
 
 app.use(function(req, res, next){
     res.locals.currentUser=req.user //
