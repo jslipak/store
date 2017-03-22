@@ -22,13 +22,16 @@ app.set('view engine', 'ejs');
 
 app.use(passport.initialize());
 app.use(passport.session());
-
 // Todas estas funciones nos las da el plugin de Mongoose. Acá las conectamos con Passport
 passport.use(new localStrategy(Users.authenticate('local'))); // Aca creamos la estragegia
 
 // La funcion authenticate() devuelve datos del usuario si es un usuario autenticado y false si no.
 passport.serializeUser(Users.serializeUser()); // Función que guarda los datos en la db de sesiones.
 passport.deserializeUser(Users.deserializeUser()); // Función que recupera los datos de la db de sesiones.
+app.use(function(req, res, next){
+    res.locals.currentUser=req.username //
+    next()
+  })
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));

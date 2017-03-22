@@ -3,7 +3,7 @@ var router =express.Router();
 var passport =require("passport");
 var LocalStrategy = require('passport-local').Strategy; //lo puse porque lo vi en stack OverFlow
 var User =require("../models/user");
-
+var app = require("../app.js")
 /* GET home page. */
 router.get('/', function(req, res, next) {
 res.render('index', { title: 'Express' });
