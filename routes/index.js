@@ -38,7 +38,7 @@ router.post("/login",passport.authenticate("local",{
     //successRedirect:"/products",
     failureRedirect:"/register",
     }),function(res,req){
-      console.log('logueado');
+      console.log(req.username);
       req.redirect("/");
     })
 
