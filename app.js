@@ -25,10 +25,6 @@ app.use(require("express-session")({
    saveUninitialized: false
  }))
 
-app.use(function(req, res, next){
-    res.locals.currentUser=req.user //
-    next()
-  })
 app.use(passport.initialize());
 app.use(passport.session());
 // Todas estas funciones nos las da el plugin de Mongoose. Acá las conectamos con Passport
@@ -38,6 +34,10 @@ passport.use(new localStrategy(Users.authenticate('local'))); // Aca creamos la 
 passport.serializeUser(Users.serializeUser()); // Función que guarda los datos en la db de sesiones.
 passport.deserializeUser(Users.deserializeUser()); // Función que recupera los datos de la db de sesiones.
 
+app.use(function(req, res, next){
+    res.locals.currentUser=req.user //
+    next()
+  })
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
