@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var Product=require("../models/product")
+var middleware = require("../middleware/index")
 
 /* GET home page. */
 router.get('/', function(req, res) {
