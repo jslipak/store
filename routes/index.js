@@ -35,13 +35,13 @@ router.post("/login",passport.authenticate("local",{
     //successRedirect:"/products",
     failureRedirect:"/register",
     }),function(res,req){
-      console.log("logueado");
+      console.log("logueado   ");
       req.redirect("/");
     })
 
 router.get("/logout", function(req, res) {
     req.logout()
-    res.render('index')
+    res.redirect('/')
     
     })
 module.exports = router;
