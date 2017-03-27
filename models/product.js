@@ -3,6 +3,7 @@ var mongoose = require('mongoose'),
  productSchema = new schema({
      nameProduct:{type: String , require:true},
      descriptionProduct: String,
+     urlImageProduct: String,
      price: Number,
      author:{
          type: mongoose.Schema.Types.ObjectId,
