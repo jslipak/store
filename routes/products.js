@@ -12,6 +12,7 @@ router.get('/new',function(req,res){
 });
 
 router.post("/", middleware.isLoggedIn, function(req, res){
+  console.log(req.body.nameProduct)
   var product= new Product ({nameProduct:req.body.nameProduct})
   var author={
     id:req.user._id,
@@ -20,7 +21,8 @@ router.post("/", middleware.isLoggedIn, function(req, res){
    product.author=author
    product.descriptionProduct=req.body.descriptionProduct
    product.urlImageProduct=req.body.urlImageProduct
-   product.price=req.body.price
+   product.price=!!Number(req.body.price)
+   console.log(product)
    Product.create(product, function(err, doc){
     if(err){
       console.log(err);
