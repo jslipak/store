@@ -11,12 +11,7 @@ router.get('/new',function(req,res){
   res.render("addItem")
 });
 
-router.post('/', middleware.isLoggedIn,function(req,res){
-  console.log(req.body)
-  res.render('index')
-} )
-
-app.post("/", middleware.isLoggedIn, function(req, res){
+router.post("/", middleware.isLoggedIn, function(req, res){
   var product=req.body.nameProduct
   var author={
     id:req.user._id,
