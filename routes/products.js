@@ -4,8 +4,14 @@ var Product=require("../models/product")
 var middleware = require("../middleware/index")
 
 /* GET home page. */
-router.get('/', function(req, res) {
-  res.render('index')});
+router.get("/", function(req, res){
+    Product.find({}, function(err, products){
+    if(err){
+      res.render("error")
+    }else{
+    res.render("index", {products:products})}
+  })})
+
 
 router.get('/new',function(req,res){
   res.render("addItem")
