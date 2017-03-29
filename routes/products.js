@@ -13,24 +13,27 @@ router.get('/new',function(req,res){
 
 router.post("/", middleware.isLoggedIn, function(req, res){
   console.log(req.body.nameProduct)
-  var product= new Product ({nameProduct:req.body.nameProduct})
-  var author={
+  console.log(req.user._id)
+  var product= new Product ()
+   product.nameProduct=req.body.nameProduct
+   product.descriptionProduct=req.body.descriptionProduct
+   console.log(req.body.price)
+   product.price=Number(req.body.price)
+   product.urlImageProduct=req.body.urlImageProduct
+   var author={
     id:req.user._id,
-    username: req.user.username
+    user: req.user.username
   }
    product.author=author
-   product.descriptionProduct=req.body.descriptionProduct
-   product.urlImageProduct=req.body.urlImageProduct
-   product.price=!!Number(req.body.price)
    console.log(product)
    Product.create(product, function(err, doc){
     if(err){
       console.log(err);
-      // res.render("error")
-      res.sendStatus(500);
+      res.render("error")
+      //res.sendStatus(500);
     }else{
-      //res.redirect("/products")
-      res.sendStatus(200);
+      res.redirect("/")
+      //res.sendStatus(200);
     }
   })
 

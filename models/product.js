@@ -5,9 +5,12 @@ var mongoose = require('mongoose'),
      descriptionProduct: String,
      urlImageProduct: String,
      price: Number,
-     author:{
-         type: mongoose.Schema.Types.ObjectId,
-         ref: "User"
+     author:{ 
+          id:{
+          type: mongoose.Schema.Types.ObjectId,
+          ref: "User"
+        },
+        username: String
      },
      comment:[{
          type: mongoose.Schema.Types.ObjectId,
