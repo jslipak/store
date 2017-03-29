@@ -16,22 +16,21 @@
 
    <!-- aca tiene que ir con un for , para que cargue directo de mongo -->
     <div class="container">
-
+        
+    <% products.forEach(function(product){ %>
         <div class="row">
             <div class="col-lg-2 col-md-3  col-sm-4 ">
                 <div class="thumbnail">
-                    <img src="images/Tuareg_novel_-_bookcover.jpg" alt="...">
+                    <img src="<%= Product.urlImageProduct %>" alt=" <%= Product.nameProduct %>">
                     <div class="caption">
-                        <p class="izq_text"><strong>Nombre:</strong>Tuang</p>
-                        <p class="izq_text"><strong>Categoria:</strong>Novelas</p>
-                        <p class="izq_text"><strong>Precio</strong> $230</p>
-                        <p class="izq_text"><strong>Lugar de venta:</strong>El Ateneo</p>
-                        
-
+                        <p class="izq_text"><strong>Nombre:</strong><%= Product.nameProduct %>"</p>
+                        <p class="izq_text"><strong>Descripcion:</strong><%= Product.descriptionProduct%></p>
+                        <p class="izq_text"><strong>Precio</strong><%= Product.priceProduct %></p>
                     </div>
                 </div>
             </div>
         </div>
+    <% }) %>
 
     <% include Partials/footer %>
     </div>
