@@ -12,12 +12,11 @@ router.get('/new',function(req,res){
 });
 
 router.post("/", middleware.isLoggedIn, function(req, res){
-  console.log(req.body.nameProduct)
-  console.log(req.user._id)
+  //console.log(req.body.nameProduct)
+  //console.log(req.user._id)
   var product= new Product ()
    product.nameProduct=req.body.nameProduct
    product.descriptionProduct=req.body.descriptionProduct
-   console.log(req.body.price)
    product.price=Number(req.body.price)
    product.urlImageProduct=req.body.urlImageProduct
    var author={

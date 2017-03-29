@@ -15,25 +15,26 @@
         <% include Partials/header %>
 
    <!-- aca tiene que ir con un for , para que cargue directo de mongo -->
+     <% console.log(products) %>   
     <div class="container">
-        
-    <% products.forEach(function(product){ %>
         <div class="row">
+    <% products.forEach(function(product){ %>
             <div class="col-lg-2 col-md-3  col-sm-4 ">
                 <div class="thumbnail">
-                    <img src="<%= Product.urlImageProduct %>" alt=" <%= Product.nameProduct %>">
+                    <img src="<%= product.urlImageProduct %>" alt=" <%= product.nameProduct %>">
                     <div class="caption">
-                        <p class="izq_text"><strong>Nombre:</strong><%= Product.nameProduct %>"</p>
-                        <p class="izq_text"><strong>Descripcion:</strong><%= Product.descriptionProduct%></p>
-                        <p class="izq_text"><strong>Precio</strong><%= Product.priceProduct %></p>
+                        <p class="izq_text"><strong>Nombre:</strong><%= product.nameProduct %></p>
+                        <p class="izq_text"><strong>Descripcion:</strong><%= product.descriptionProduct %></p>
+                        <p class="izq_text"><strong>Precio</strong><%= product.price %></p>
+                        <% console.log(product.priceProduct) %>
                     </div>
                 </div>
             </div>
-        </div>
     <% }) %>
-
+        </div>
     <% include Partials/footer %>
     </div>
+
     <!-- thumbnail fin -->
     <script type="text/javascript" src="javascripts/jquery-3.1.1.min.js"></script>
     <script type="text/javascript" src="javascripts/bootstrap.js"></script>

@@ -5,10 +5,21 @@ var LocalStrategy = require('passport-local').Strategy; //lo puse porque lo vi e
 var User =require("../models/user");
 var app = require("../app.js")
 var bodyParser= require("body-parser")
+var Product =require("../models/product");
+
 /* GET home page. */
-router.get('/', function(req, res, next) {
-res.render('index', { title: 'Express' });
-});
+// router.get('/', function(req, res, next) {
+// res.render('index', {product:products});
+// });
+
+router.get("/", function(req, res){
+    Product.find({}, function(err, products){
+    if(err){
+      res.render("error")
+    }else{
+    res.render("index", {products:products})}
+  })})
+
 
 router.get('/register' ,function(req,res,next){
 res.render('register')
