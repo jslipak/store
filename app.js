@@ -12,6 +12,7 @@ var index = require('./routes/index');
 var products = require('./routes/products');
 var comments = require('./routes/comments');
 var app = express();
+var methodOverride  = require("method-override");
 mongoose.connect("mongodb://localhost/store2")
 
 // uncomment after placing your favicon in /public
