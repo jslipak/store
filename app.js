@@ -11,6 +11,7 @@ var bodyParser= require("body-parser");
 var index = require('./routes/index');
 var products = require('./routes/products');
 var comments = require('./routes/comments');
+var users =  require('./models/user')
 var app = express();
 var methodOverride  = require("method-override");
 mongoose.connect("mongodb://localhost/store2")
@@ -23,7 +24,8 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 //para que anda el borrado y la edicion 
-app.use(methodOverride('X-HTTP-Method-Override'))
+//app.use(methodOverride('X-HTTP-Method-Override'))
+  app.use(methodOverride("_method"))
 //passportConfigurate
 app.use(require("express-session")({
    secret:"ksdjflskf sfsdjfdsk fjds fdsñkf jñsflk sñfl skdfjsdfñlkjsf dsafds afsfj",
