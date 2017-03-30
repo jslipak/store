@@ -17,17 +17,17 @@ router.get('/new',function(req,res){
   res.render("addItem")
 });
 
-//render productos by id
-router.get('/:id ',function(req ,res){
-  Product.findById(req.param.id , function(req, res) {
+
+router.get("/:id", function(req, res){
+  Product.findById(req.params.id).exec(function(err, product){
     if(err){
-      res.send('error no carga nada')
-    }else {
-      res.render("idProduct",{product:idProduct})
-        }
+      res.send("gato")
+    }else{
+      res.render("idProduct", {product:product})
+    }
+  })
 })
 
-});
 
 //Alta de productos ok
 router.post("/", middleware.isLoggedIn, function(req, res){

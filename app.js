@@ -51,6 +51,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', index);
 //app.use('/users', users);
 app.use('/products', products)
+//app.use('product/:id',products)
 app.use('comments', comments)
 
 // catch 404 and forward to error handler
