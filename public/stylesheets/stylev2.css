@@ -44,8 +44,14 @@ cssstyle.thumbnail {
 
 }
 
-.idProduct {
-    background-color: magenta;
-    width:42% vh;
+.idProdcuct {
+    width:44%;
     border: 2px solid black;
+    border-radius: 10px;
+}
+
+.idProdcuct img{ 
+    margin: 0 auto;
+    height: 30%;
+    width: 90%;
 }
