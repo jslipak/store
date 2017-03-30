@@ -22,6 +22,8 @@ app.use(favicon(path.join(__dirname, 'public','images','favicon.ico')));
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
+//para que anda el borrado y la edicion 
+app.use(methodOverride('X-HTTP-Method-Override'))
 //passportConfigurate
 app.use(require("express-session")({
    secret:"ksdjflskf sfsdjfdsk fjds fdsñkf jñsflk sñfl skdfjsdfñlkjsf dsafds afsfj",
