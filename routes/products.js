@@ -21,7 +21,7 @@ router.get('/new',function(req,res){
 router.get('/:id ',function(req ,res){
   Product.findById(req.param.id , function(req, res) {
     if(err){
-      res.render('error')
+      res.send('error no carga nada')
     }else {
       res.render("idProduct",{product:idProduct})
         }
