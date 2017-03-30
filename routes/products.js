@@ -56,4 +56,15 @@ router.post("/", middleware.isLoggedIn, function(req, res){
 
 })
 
+//baja productos
+app.delete("/:id",  middleware.producOwner, function(req, res){
+  Product.findByIdAndRemove(req.params.id, function(err){
+    if(err){
+      res.render("error")
+    }else{
+    res.redirect("/products")
+    }
+  })
+})
+
 module.exports = router;

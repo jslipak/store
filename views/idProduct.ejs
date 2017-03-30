@@ -19,7 +19,10 @@
                         <p class="izq_text"><strong>Nombre:</strong><%= product.nameProduct %></p>
                         <p class="izq_text"><strong>Descripcion:</strong><%= product.descriptionProduct %></p>
                         <p class="izq_text"><strong>Precio:</strong><%= product.price %></p>
-                        <a class="btn btn-warning" href="./products/<%= product.id %>">comprar<a>
+                        <a class="btn btn-warning" href="/products/<%= product.id %>">comprar<a>
+                         <% if(currentUser && product.author.id.equals(currentUser._id)){ %>
+                            <a class="btn btn-danger" href="/products/<%= product.id %>">borrar<a>
+                            <% } %>
                     </div>
                 </div>
             <div class="thumbnail">
