@@ -29,6 +29,16 @@ router.get("/:id", function(req, res){
 })
 
 
+//baja productos
+router.delete("/:id", productOwner ,function(req, res){
+  Product.findByIdAndRemove(req.params.id, function(err){
+    if(err){
+      res.render("error")
+    }else{
+    res.redirect("/products")
+    }
+  })
+})
 //Alta de productos ok
 
 router.post("/", middleware.isLoggedIn, function(req, res){
@@ -56,15 +66,5 @@ router.post("/", middleware.isLoggedIn, function(req, res){
 
 })
 
-//baja productos
-router.delete("/:id",  middleware.productOwner, function(req, res){
-  Product.findByIdAndRemove(req.params.id, function(err){
-    if(err){
-      res.render("error")
-    }else{
-    res.redirect("/products")
-    }
-  })
-})
 
 module.exports = router;
