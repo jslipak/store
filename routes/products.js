@@ -17,9 +17,20 @@ router.get('/new',function(req,res){
   res.render("addItem")
 });
 
+//render productos by id
+router.get('/:id ',function(req ,res){
+  Product.findById(req.param.id , function(req, res) {
+    if(err){
+      res.render('error')
+    }else {
+      res.render("idProduct",{product:idProduct})
+        }
+})
+
+});
+
+//Alta de productos ok
 router.post("/", middleware.isLoggedIn, function(req, res){
-  //console.log(req.body.nameProduct)
-  //console.log(req.user._id)
   var product= new Product ()
    product.nameProduct=req.body.nameProduct
    product.descriptionProduct=req.body.descriptionProduct

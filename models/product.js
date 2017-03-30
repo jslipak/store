@@ -5,17 +5,19 @@ var mongoose = require('mongoose'),
      descriptionProduct: String,
      urlImageProduct: String,
      price: Number,
-     author:{ 
+     author:{   
           id:{
           type: mongoose.Schema.Types.ObjectId,
           ref: "User"
         },
         username: String
      },
-     comment:[{
+     comment:[
+         {
          type: mongoose.Schema.Types.ObjectId,
          ref: "Comment"
-     }]
+     }
+     ]
  })
 
 module.exports = mongoose.model ('Product' , productSchema)
