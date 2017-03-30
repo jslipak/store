@@ -14,11 +14,14 @@ router.get("/", function(req, res){
 
 
 
+router.get('/new',function(req,res){
+  res.render("addItem")
+});
 
 router.get("/:id", function(req, res){
   Product.findById(req.params.id).exec(function(err, product){
     if(err){
-      res.send("gato")
+      res.send("error")
     }else{
       res.render("idProduct", {product:product})
     }
@@ -27,9 +30,6 @@ router.get("/:id", function(req, res){
 
 
 //Alta de productos ok
-router.get('/new',function(req,res){
-  res.render("addItem")
-});
 
 router.post("/", middleware.isLoggedIn, function(req, res){
   var product= new Product ()
