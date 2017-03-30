@@ -14,7 +14,7 @@
     <div class="container">
         <h1>Editar producto!</h1>
         <!-- Formulario  edit Producto  -->
-        <form  method="" action="">
+        <form  method="POST" action="/products/<%=product._id%>?_method=PUT">
             
             <div class="form-group">
                 <label for="TiluloID">Nombre Producto:</label>
@@ -31,7 +31,7 @@
             </div>
             <div class="form-group">
                 <label for="NumberID">Precio:</label>
-                <input type="number" class="form-control" name="price" id="NumberID" value="product.price">
+                <input type="number" class="form-control" name="price" id="NumberID" value="<%= product.price %>">
             </div>
 
             

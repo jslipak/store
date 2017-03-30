@@ -3,14 +3,14 @@ var router = express.Router();
 var Product=require("../models/product")
 var middleware = require("../middleware/index")
 
-/* GET home page. */
+// /* GET home page. */
 router.get("/", function(req, res){
     Product.find({}, function(err, products){
     if(err){
       res.render("error")
     }else{
     res.render("index", {products:products})}
-  })})
+  })})  
 
 
 
@@ -29,8 +29,9 @@ router.get("/:id", function(req, res){
 })
 
 //editar productos
-router.get("/:id/edit", middleware.producOwner, function(req, res){
-  Product.findById(req.params.id, function(err, product){
+//1ro render lo que hay BD
+router.get("/:id/edit", function(req, res){
+  Product.findById(req.params.id).exec(function(err, product){
     if(err){
       res.render("error")
     }else{
@@ -39,13 +40,30 @@ router.get("/:id/edit", middleware.producOwner, function(req, res){
   })
 })
 
+
 //baja productos
-router.delete("/:id", middleware.productOwner ,function(req, res){
+router.delete("/:id",middleware.isLoggedIn, middleware.productOwner ,function(req, res){
   Product.findByIdAndRemove(req.params.id, function(err){
     if(err){
       res.render("error")
     }else{
-    res.redirect("/products")
+    res.redirect("/new")
+    }
+  })
+})
+
+router.put("/:id", middleware.producOwner, function(req, res){
+  var product= new Product ()
+   product.nameProduct=req.body.nameProduct
+   product.descriptionProduct=req.body.descriptionProduct
+   product.price=Number(req.body.price)
+   product.urlImageProduct=req.body.urlImageProduct
+
+  Product.findByIdAndUpdate(req.params.id,product, function(err){
+    if(err){
+      res.render("error")
+    }else{
+      res.redirect("/products/"+req.params.id)
     }
   })
 })
