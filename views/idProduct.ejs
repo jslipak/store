@@ -21,8 +21,11 @@
                         <p class="izq_text"><strong>Precio:</strong><%= product.price %></p>
                         <a class="btn btn-warning" href="/products/<%= product.id %>">comprar<a>
                          <% if(currentUser && product.author.id.equals(currentUser._id)){ %>
-                            <a class="btn btn-danger" href="/products/<%= product.id %>">borrar<a>
+                            <form  action="/products/<%=product.id%>" method="delete" >
+                            <button class="btn btn-danger">borrar </button>
+                            </form>
                             <% } %>
+                            
                     </div>
                 </div>
             <div class="thumbnail">

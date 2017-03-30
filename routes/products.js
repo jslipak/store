@@ -57,7 +57,7 @@ router.post("/", middleware.isLoggedIn, function(req, res){
 })
 
 //baja productos
-app.delete("/:id",  middleware.producOwner, function(req, res){
+router.delete("/:id",  middleware.productOwner, function(req, res){
   Product.findByIdAndRemove(req.params.id, function(err){
     if(err){
       res.render("error")
