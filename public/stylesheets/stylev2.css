@@ -43,3 +43,9 @@ cssstyle.thumbnail {
     border: 32px solid darkorange;
 
 }
+
+.idProduct {
+    background-color: magenta;
+    width:42% vh;
+    border: 2px solid black;
+}
