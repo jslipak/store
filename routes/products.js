@@ -32,7 +32,7 @@ router.get("/:id", function(req, res){
 //baja productos
 router.delete("/:id"//, middleware.productOwner //
 ,function(req, res){
-  Product.findByIdAndRemove(req.params._id, function(err){
+  Product.findByIdAndRemove(req.params.id, function(err){
     if(err){
       res.render("error")
     }else{
