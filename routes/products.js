@@ -28,10 +28,19 @@ router.get("/:id", function(req, res){
   })
 })
 
+//editar productos
+router.get("/:id/edit", middleware.producOwner, function(req, res){
+  Product.findById(req.params.id, function(err, product){
+    if(err){
+      res.render("error")
+    }else{
+      res.render("editProduct", {product:product})
+    }
+  })
+})
 
 //baja productos
-router.delete("/:id"//, middleware.productOwner //
-,function(req, res){
+router.delete("/:id", middleware.productOwner ,function(req, res){
   Product.findByIdAndRemove(req.params.id, function(err){
     if(err){
       res.render("error")

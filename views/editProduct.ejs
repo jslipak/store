@@ -6,36 +6,36 @@
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" href="/stylesheets/stylev2.css">
-    <title>webstore</title>
+    <title>>webstore</title>
 </head>
 
 <body>
         <% include Partials/header %>
     <div class="container">
-        <h1>Agregar producto!</h1>
-        <!-- Formulario Nuevo Producto  -->
-        <form  method="POST" action="/products">
+        <h1>Editar producto!</h1>
+        <!-- Formulario  edit Producto  -->
+        <form  method="" action="">
             
             <div class="form-group">
                 <label for="TiluloID">Nombre Producto:</label>
-                <input type="text" class="form-control" id="TituloID" name="nameProduct" placeholder="Nombre del libro o Cd">
+                <input type="text" class="form-control" id="TituloID" name="nameProduct" value="<%= product.nameProduct %>">
             </div>
 
             <div class="form-group">
                 <label for="CatID">Descripcion:</label>
-                <input type="text" class="form-control" name="descriptionProduct" id="CatID" placeholder="Categoria del libro">
+                <input type="text" class="form-control" name="descriptionProduct" id="CatID" value="<%= product.descriptionProduct %>">
             </div>
             <div class="form-group">
                 <label for="UrlID">URL imagen:</label>
-                <input type="text" class="form-control" name="urlImageProduct" id="urlID" placeholder="Imagen URL">
+                <input type="text" class="form-control" name="urlImageProduct" id="urlID" value="<%= product.urlImageProduct %>">
             </div>
             <div class="form-group">
                 <label for="NumberID">Precio:</label>
-                <input type="number" class="form-control" name="price" id="NumberID" placeholder="Precio del libro">
+                <input type="number" class="form-control" name="price" id="NumberID" value="product.price">
             </div>
 
             
-            <button type="submit" class="btn btn-primary">Publicar!</button>
+            <button type="submit" class="btn btn-primary">Editar!</button>
         </form>
      <% include Partials/footer %>
     </div>
