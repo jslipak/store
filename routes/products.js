@@ -13,9 +13,6 @@ router.get("/", function(req, res){
   })})
 
 
-router.get('/new',function(req,res){
-  res.render("addItem")
-});
 
 
 router.get("/:id", function(req, res){
@@ -30,6 +27,10 @@ router.get("/:id", function(req, res){
 
 
 //Alta de productos ok
+router.get('/new',function(req,res){
+  res.render("addItem")
+});
+
 router.post("/", middleware.isLoggedIn, function(req, res){
   var product= new Product ()
    product.nameProduct=req.body.nameProduct
