@@ -22,16 +22,17 @@
             <div class="col-lg-2 col-md-3  col-sm-4 ">
                 <div class="thumbnail">
                     <img src="<%= product.urlImageProduct %>" alt=" <%= product.nameProduct %>">
-                    <div class="caption">
+                    <div class="">
                         <p class="izq_text"><strong>Nombre:</strong><%= product.nameProduct %></p>
                         <p class="izq_text"><strong>Descripcion:</strong><%= product.descriptionProduct %></p>
                         <p class="izq_text"><strong>Precio:</strong><%= product.price %></p>
-                        <a href="./products/<%= product.id %>">Seleccion<a>
+                        <a href="./products/<%= product.id %>">Seleccion</a>
                     </div>
                 </div>
             </div>
     <% }) %>
         </div>
+        
     <% include Partials/footer %>
     </div>
 
