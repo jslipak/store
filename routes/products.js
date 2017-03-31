@@ -40,8 +40,8 @@ router.get("/:id/edit", function(req, res){
   })
 })
 
-router.put("/:id", middleware.producOwner, function(req, res){
-  var product= new Product ()
+router.put( "/:id" , middleware.productOwner, function(req, res){
+   var product= new Product ()
    product.nameProduct=req.body.nameProduct
    product.descriptionProduct=req.body.descriptionProduct
    product.price=Number(req.body.price)
