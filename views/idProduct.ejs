@@ -19,7 +19,7 @@
                         <p class="izq_text"><strong>Nombre:</strong><%= product.nameProduct %></p>
                         <p class="izq_text"><strong>Descripcion:</strong><%= product.descriptionProduct %></p>
                         <p class="izq_text"><strong>Precio:</strong><%= product.price %></p>
-                        <a class="btn btn-warning" href="/products/<%= product.id %>">comprar<a>
+                        <a class="btn btn-warning" href="/products/<%= product.id %>">comprar</a>
                          <% if(currentUser && product.author.id.equals(currentUser._id)){ %>
                             <form  action="/products/<%=product.id%>?_method=DELETE" method="POST" >
                             <button class="btn btn-danger" type="submit">borrar </button>
@@ -30,10 +30,26 @@
                     </div>
                 </div>
             <div class="thumbnail">
-                    <p>Comentarios</p>
+                    <p>Comentarios</p> 
                     
-                </div>
+                    <% if (!currentUser) { %>
+                    <p> Para Hacer comentarios , necesitas Logearte! </p>
+                    <% }else { %>
+                    <form action="/comments" method="POST">
+                     <div class="form-group">
+                        <label for="body">Deje su comentario:</label>
+                        <input type="text" class="form-control"  name="body">
+                     </div>
+                    <button type="submit" class="btn btn-primary">Envie su comentario! </button>
+                    </form>
+
+                    
+
+                    <% } %>
+
+            </div>                    
         </div>
+        
 
         <% include Partials/footer %>    
     </div>

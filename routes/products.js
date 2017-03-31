@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var Product=require("../models/product")
 var middleware = require("../middleware/index")
-
+var comments = require("../models/comment")
 // /* GET home page. */
 router.get("/", function(req, res){
     Product.find({}, function(err, products){
@@ -40,29 +40,27 @@ router.get("/:id/edit", function(req, res){
   })
 })
 
-//router.put( "/:id" , middleware.productOwner, function(req, res){
+router.put( "/:id" , middleware.productOwner, function(req, res){
   
   //Por lo visto todos juntos no se puede
-  //var product= {}
+  var product= {}
   //  product.id=req.params.id
-  //  product.nameProduct=req.body.nameProduct
-  //  product.descriptionProduct=req.body.descriptionProduct
-  //  product.price=Number(req.body.price)
-  //  product.urlImageProduct=req.body.urlImageProduct
-  //  console.log("Aca va el Id:")
+   product.nameProduct=req.body.nameProduct
+   product.descriptionProduct=req.body.descriptionProduct
+   product.price=Number(req.body.price)
+   product.urlImageProduct=req.body.urlImageProduct
+   
   //  console.log(req.params.id)
   //  console.log(product)
-//   var product= new Product ()
-//   console.log(req.body.price)
-//   product.price=!!Number(req.body.price)
-//   Product.findByIdAndUpdate(req.params.id, product, function(err){
-//     if(err){
-//       res.render("error")
-//     }else{
-//       res.redirect("/products/"+req.params.id)
-//     }
-//   })
-// })
+
+  Product.findByIdAndUpdate(product._id, product, function(err){
+    if(err){
+      res.render("error")
+    }else{
+      res.redirect("/products/"+req.params.id)
+    }
+  })
+})
   
 
 //baja productos
