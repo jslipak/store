@@ -19,7 +19,7 @@ router.get('/new',function(req,res){
 });
 
 router.get("/:id", function(req, res){
-  Product.findById(req.params.id).exec(function(err, product){
+  Product.findById(req.params.id).populate("comments").exec(function(err, product){
     if(err){
       res.send("error")
     }else{
@@ -40,24 +40,30 @@ router.get("/:id/edit", function(req, res){
   })
 })
 
-router.put( "/:id" , middleware.productOwner, function(req, res){
-   var product= {}
-   product.id=req.params.id
-   product.nameProduct=req.body.nameProduct
-   product.descriptionProduct=req.body.descriptionProduct
-   product.price=Number(req.body.price)
-   product.urlImageProduct=req.body.urlImageProduct
-   console.log("Aca va el Id:")
-   console.log(req.params.id)
-   console.log(product)
-  Product.findByIdAndUpdate(product, function(err){
-    if(err){
-      res.render("error")
-    }else{ 
-      res.redirect("/products/"+req.params.id)
-    }
-  })
-})
+//router.put( "/:id" , middleware.productOwner, function(req, res){
+  
+  //Por lo visto todos juntos no se puede
+  //var product= {}
+  //  product.id=req.params.id
+  //  product.nameProduct=req.body.nameProduct
+  //  product.descriptionProduct=req.body.descriptionProduct
+  //  product.price=Number(req.body.price)
+  //  product.urlImageProduct=req.body.urlImageProduct
+  //  console.log("Aca va el Id:")
+  //  console.log(req.params.id)
+  //  console.log(product)
+//   var product= new Product ()
+//   console.log(req.body.price)
+//   product.price=!!Number(req.body.price)
+//   Product.findByIdAndUpdate(req.params.id, product, function(err){
+//     if(err){
+//       res.render("error")
+//     }else{
+//       res.redirect("/products/"+req.params.id)
+//     }
+//   })
+// })
+  
 
 //baja productos
 router.delete("/:id",middleware.isLoggedIn, middleware.productOwner ,function(req, res){
