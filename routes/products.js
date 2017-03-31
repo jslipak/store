@@ -33,7 +33,7 @@ router.get("/:id", function(req, res){
 router.get("/:id/edit", function(req, res){
   Product.findById(req.params.id).exec(function(err, product){
     if(err){
-      res.render("error")
+      res.render("/new")
     }else{
       res.render("editProduct", {product:product})
     }
@@ -41,16 +41,19 @@ router.get("/:id/edit", function(req, res){
 })
 
 router.put( "/:id" , middleware.productOwner, function(req, res){
-   var product= new Product ()
+   var product= {}
+   product.id=req.params.id
    product.nameProduct=req.body.nameProduct
    product.descriptionProduct=req.body.descriptionProduct
    product.price=Number(req.body.price)
    product.urlImageProduct=req.body.urlImageProduct
-
-  Product.findByIdAndUpdate(req.params.id, product , function(err){
+   console.log("Aca va el Id:")
+   console.log(req.params.id)
+   console.log(product)
+  Product.findByIdAndUpdate(product, function(err){
     if(err){
       res.render("error")
-    }else{
+    }else{ 
       res.redirect("/products/"+req.params.id)
     }
   })
