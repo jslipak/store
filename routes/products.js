@@ -40,6 +40,21 @@ router.get("/:id/edit", function(req, res){
   })
 })
 
+router.put("/:id", middleware.producOwner, function(req, res){
+  var product= new Product ()
+   product.nameProduct=req.body.nameProduct
+   product.descriptionProduct=req.body.descriptionProduct
+   product.price=Number(req.body.price)
+   product.urlImageProduct=req.body.urlImageProduct
+
+  Product.findByIdAndUpdate(req.params.id, product , function(err){
+    if(err){
+      res.render("error")
+    }else{
+      res.redirect("/products/"+req.params.id)
+    }
+  })
+})
 
 //baja productos
 router.delete("/:id",middleware.isLoggedIn, middleware.productOwner ,function(req, res){
@@ -52,23 +67,7 @@ router.delete("/:id",middleware.isLoggedIn, middleware.productOwner ,function(re
   })
 })
 
-router.put("/:id", middleware.producOwner, function(req, res){
-  var product= new Product ()
-   product.nameProduct=req.body.nameProduct
-   product.descriptionProduct=req.body.descriptionProduct
-   product.price=Number(req.body.price)
-   product.urlImageProduct=req.body.urlImageProduct
-
-  Product.findByIdAndUpdate(req.params.id,product, function(err){
-    if(err){
-      res.render("error")
-    }else{
-      res.redirect("/products/"+req.params.id)
-    }
-  })
-})
 //Alta de productos ok
-
 router.post("/", middleware.isLoggedIn, function(req, res){
   var product= new Product ()
    product.nameProduct=req.body.nameProduct
