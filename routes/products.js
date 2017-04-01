@@ -69,7 +69,7 @@ router.delete("/:id",middleware.isLoggedIn, middleware.productOwner ,function(re
     if(err){
       res.render("error")
     }else{
-    res.redirect("/new")
+    res.redirect("/")
     }
   })
 })
