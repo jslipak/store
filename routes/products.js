@@ -4,13 +4,13 @@ var Product=require("../models/product")
 var middleware = require("../middleware/index")
 var comments = require("../models/comment")
 // /* GET home page. */
-router.get("/", function(req, res){
-    Product.find({}, function(err, products){
-    if(err){
-      res.render("error")
-    }else{
-    res.render("index", {products:products})}
-  })})  
+// router.get("/", function(req, res){
+//     Product.find({}, function(err, products){
+//     if(err){
+//       res.render("error")
+//     }else{
+//     res.render("index", {products:products})}
+//   })})  
 
 
 
