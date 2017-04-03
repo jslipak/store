@@ -42,24 +42,21 @@
                      </div>
                     <button type="submit" class="btn btn-primary">Envie su comentario! </button>
                     </form>
-                    <% } %>
                 </div>
+                    <% } %>
             
-            //</div>
-
+            <div class="thumbnail">
+                    <p>Comentarios:</p> 
+                    <% console.log(product) %> 
+                    <% console.log(comments) %>
+           
+                      
+            </div>
+                
             
-            //  <div class="thumbnail">
-            //         <p>Comentarios:</p> 
-            //         <% product.comments.forEach(function(comment){ %>
-            //         <div>
-            //         <h4><%=comment.author.username %></h4>
-            //         <p><%=comment.body%></p>
-            //         <p ><%=comment.date.toTimeString().slice(0, 5)+" "+comment.date.toDateString()%></p>
-            //         </div>                      
-            //         <% } %>
-            // </div>
+         
         
-
+        </div>
         <% include Partials/footer %>    
     </div>
     <!-- thumbnail fin -->
