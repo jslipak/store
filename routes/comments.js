@@ -18,6 +18,7 @@ router.post("/", middleware.isLoggedIn, function(req, res){
             if(err){
               res.render(error)
             }else{
+            
               Product.comments.unshift(comment)
               Product.save()
           res.redirect("/products/"+req.params.id)
