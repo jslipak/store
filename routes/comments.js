@@ -14,12 +14,12 @@ router.post("/", middleware.isLoggedIn, function(req, res){
         if(err){
           res.render(error)
         }else{
-          Comment.create({productId:req.params.id, body:body, author:author} , function(err, comment){
+          Comment.create({productId:req.params.id, body:body, author:author} , function(err, comments){
             if(err){
               res.render(error)
             }else{
-              product.comment.unshift(comment)
-              product.save()
+              Product.comments.unshift(comment)
+              Product.save()
           res.redirect("/products/"+req.params.id)
           
         }
@@ -31,14 +31,13 @@ router.post("/", middleware.isLoggedIn, function(req, res){
 //baja comentarios
 router.delete("/:c_id",middleware.isLoggedIn ,function(req, res){
  // return console.log("soy el id del comentario: " + req.params.c_id)
-
-  Comment.findByIdAndRemove(req.params._c_id , function(err){
+console.log(req.params.c_id)
+ Comment.findByIdAndRemove(req.params.c_id , function(err, comment){
     if(err){
     res.render('error')
   }else{
-  var indice  = Product.comment.indexOf(comment)
-  Product.comment.splice(indice, 1)
-  Product.save()
+  // var indice  = Product.comment.indexOf(req.params.c_id)
+  // Product.comment.splice(indice, 1)
   res.redirect("back")
     }
   })
