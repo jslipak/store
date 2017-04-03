@@ -14,7 +14,7 @@ var comments = require('./routes/comments');
 var users =  require('./models/user')
 var app = express();
 var methodOverride  = require("method-override");
-mongoose.connect("mongodb://localhost/store2")
+mongoose.connect("mongodb://localhost/store3")
 
 // uncomment after placing your favicon in /public
 app.use(favicon(path.join(__dirname, 'public','images','favicon.ico')));
@@ -54,11 +54,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
-//app.use('/users', users);
 app.use('/products', products)
 app.use("/products/:id/comments", comments)
-
-
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
