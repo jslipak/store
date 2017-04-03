@@ -36,8 +36,10 @@ router.delete("/:c_id",middleware.isLoggedIn ,function(req, res){
     if(err){
     res.render('error')
   }else{
-    return console.log('aca llegamos')
-    res.redirect("back")
+  var indice  = Product.comment.indexOf(comment)
+  Product.comment.splice(indice, 1)
+  Product.save()
+  res.redirect("back")
     }
   })
  })
