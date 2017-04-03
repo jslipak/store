@@ -42,4 +42,7 @@ console.log(req.params.c_id)
     }
   })
  })
+
+
+
 module.exports = router;
