@@ -44,17 +44,16 @@ router.get("/:id/edit", function(req, res){
 router.put( "/:id" , middleware.productOwner, function(req, res){
   
   //Por lo visto todos juntos no se puede
-  var product= {}
-  //  product.id=req.params.id
+  var product={}
    product.nameProduct=req.body.nameProduct
    product.descriptionProduct=req.body.descriptionProduct
    product.price=Number(req.body.price)
    product.urlImageProduct=req.body.urlImageProduct
    
-  //  console.log(req.params.id)
-  //  console.log(product)
+   console.log(req.params.id)
+   console.log(product)
 
-  Product.findByIdAndUpdate(product._id, product, function(err){
+  Product.findByIdAndUpdate(req.params.id, product, function(err){
     if(err){
       res.render("error")
     }else{
