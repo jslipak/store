@@ -44,23 +44,27 @@
                     </form>
                 </div>
                     <% } %>
-                    <% console.log(product.coment) %>
+                   
+            <h2>Comentarios<h2>
+            <% for(var i=0 ; i < product.comment.length ;i++) {  %>
+            <% if(currentUser.username === product.comment[i].author.username ){ %>
+            <form  action="/products/<%= product.id %>/comments/<%= product.comment[i].id %>./?_method=DELETE" method="POST" >
+            <button class="btn btn-danger" type="submit">borrar </button>
+            </form>         
+            <% } %>
             <div class="thumbnail">
-                    <p>Comentarios:</p> 
-                    <% for(var i=0 ; i < product.comment.length ; i++){%>
-                    <p><% product.commen[i].body %> </p>
-                    <% } %>
-                    
-
-           
-                      
+           <h4>de:  <%= product.comment[i].author.username %> <h4>
+           <p> <%= product.comment[i].body %></p>
+            </div>   
+            
+            <% } %>
             </div>
                 
             
          
         
-        </div>
         <% include Partials/footer %>    
+        </div>
     </div>
     <!-- thumbnail fin -->
     <script type="text/javascript" src="javascripts/jquery-3.1.1.min.js"></script>

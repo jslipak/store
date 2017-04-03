@@ -18,6 +18,8 @@ router.post("/", middleware.isLoggedIn, function(req, res){
             if(err){
               res.render(error)
             }else{
+              product.comment.unshift(comment)
+              product.save()
           res.redirect("/products/"+req.params.id)
           
         }
@@ -25,4 +27,15 @@ router.post("/", middleware.isLoggedIn, function(req, res){
     }
   })
 })
+
+//baja productos
+router.delete("/:id",middleware.isLoggedIn ,function(req, res){
+  Comment.CommentfindByIdAndRemove(req.params.id, function(err){
+    if(err){
+      res.render("error")
+    }else{
+    res.redirect("/new")
+    }
+  })
+ })
 module.exports = router;

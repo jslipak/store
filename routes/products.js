@@ -20,6 +20,7 @@ router.get('/new',function(req,res){
 
 router.get("/:id", function(req, res){
   Product.findById(req.params.id).populate("comment").exec(function(err, product){
+  //Product.findById(req.params.id).populate("Comment").exec(function(err, product){
     if(err){
       res.send("error")
     }else{
