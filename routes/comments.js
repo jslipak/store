@@ -14,13 +14,12 @@ router.post("/", middleware.isLoggedIn, function(req, res){
         if(err){
           res.render(error)
         }else{
-          Comment.create({productId:req.params.id, body:body, author:author} , function(err, comments){
+          Comment.create({productId:req.params.id, body:body, author:author} , function(err, comment){
             if(err){
               res.render(error)
             }else{
-            
-              Product.comments.unshift(comment)
-              Product.save()
+              product.comment.unshift(comment)
+              product.save()
           res.redirect("/products/"+req.params.id)
           
         }
