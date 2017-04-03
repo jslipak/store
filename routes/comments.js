@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router({mergeParams:true});
 var Product= require('../models/product');
-var Comment= require("../models/comment")
+var Comment= require('../models/comment')
 var middleware= require("../middleware/index")
 
 router.post("/", middleware.isLoggedIn, function(req, res){
@@ -32,10 +32,11 @@ router.post("/", middleware.isLoggedIn, function(req, res){
 router.delete("/:c_id",middleware.isLoggedIn ,function(req, res){
  // return console.log("soy el id del comentario: " + req.params.c_id)
 
-  Comment.CommentfindByIdAndRemove( req.params.c_id , function(err){
+  Comment.findByIdAndRemove(req.params._c_id , function(err){
     if(err){
-      //
-    }else{
+    res.render('error')
+  }else{
+    return console.log('aca llegamos')
     res.redirect("back")
     }
   })
