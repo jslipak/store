@@ -28,13 +28,15 @@ router.post("/", middleware.isLoggedIn, function(req, res){
   })
 })
 
-//baja productos
-router.delete("/:id",middleware.isLoggedIn ,function(req, res){
-  Comment.CommentfindByIdAndRemove(req.params.id, function(err){
+//baja comentarios
+router.delete("/:c_id",middleware.isLoggedIn ,function(req, res){
+ // return console.log("soy el id del comentario: " + req.params.c_id)
+
+  Comment.CommentfindByIdAndRemove( req.params.c_id , function(err){
     if(err){
-      res.render("error")
+      //
     }else{
-    res.redirect("/new")
+    res.redirect("back")
     }
   })
  })

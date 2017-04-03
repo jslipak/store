@@ -26,5 +26,24 @@ middleware.productOwner=function(req, res , next){
                          )
                               }
                                                 }
+                                                
 
+middleware.commentOwnership=function(req,res,next){
+  if(req.isAuthenticated()){
+    Comment.findById(req.params.c_id, function(err, comment){
+
+      if(err){
+        res.redirect("back")
+
+      }else if(comment.author.id.equals(req.user.id)){
+        next()
+      }else{
+        
+        res.redirect("back")
+      }
+    })
+    }else{
+      res.redirect("back")
+    }
+  }
 module.exports = middleware
