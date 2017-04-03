@@ -14,7 +14,7 @@ router.post("/", middleware.isLoggedIn, function(req, res){
         if(err){
           res.render(error)
         }else{
-          Comment.create({body:body, author:author}, function(err, comment){
+          Comment.create({productId:req.params.id, body:body, author:author} , function(err, comment){
             if(err){
               res.render(error)
             }else{

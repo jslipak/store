@@ -47,8 +47,10 @@
             
             <div class="thumbnail">
                     <p>Comentarios:</p> 
-                    <% console.log(product) %> 
-                    <% console.log(comments) %>
+                    <% for(var i=0 ; i < product.comment.length ; i++){%>
+                    <p><% product.commen[i].body %> </p>
+                    <% } %>
+                    
            
                       
             </div>
