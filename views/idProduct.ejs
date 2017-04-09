@@ -21,10 +21,12 @@
                         <p class="izq_text"><strong>Precio:</strong><%= product.price %></p>
                         <a class="btn btn-warning" href="/products/<%= product.id %>">comprar</a>
                          <% if(currentUser && product.author.id.equals(currentUser._id)){ %>
+                           <div class="btn-toolbar" role="toolbar">
                             <form  action="/products/<%=product.id%>?_method=DELETE" method="POST" >
                             <button class="btn btn-danger" type="submit">borrar </button>
                             </form>
                             <a href="/products/<%= product.id %>/edit" class="btn btn-info">editar </a>
+                            </div>
                             <% } %>
                             
                     </div>
@@ -35,6 +37,7 @@
                     <% if (!currentUser) { %>
                     <p> Para Hacer comentarios , necesitas Logearte! </p>
                     <% }else { %>
+                    <div class="btn-toolbar" role="toolbar">
                     <form action="/products/<%= product.id %>/comments" method="POST">
                      <div class="form-group">
                         <label for="body">Deje su comentario:</label>
@@ -42,6 +45,7 @@
                      </div>
                     <button type="submit" class="btn btn-primary">Envie su comentario! </button>
                     </form>
+                </div>
                 </div>
                     <% } %>
                    
@@ -52,6 +56,7 @@
                  
                  <%}else{ %>
              <% if(currentUser.username === product.comment[i].author.username ){ %>
+             <div class="btn-toolbar" role="toolbar">
              <form  action="/products/<%= product.id %>/comments/<%= product.comment[i].id %>/?_method=DELETE" method="POST" >
              <button class="btn btn-danger" type="submit">Borrar </button>
              </form>         
@@ -64,7 +69,7 @@
            <h4>de:  <%= product.comment[i].author.username %> <h4>
            <p> <%= product.comment[i].body %></p>
             </div>   
-            
+            </div>
             <% } %>
             </div>
                 
