@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" lang="es">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="/stylesheets/stylev2.css">
+    <title>>webstore</title>
+</head>
+
+<body>
+        <% include Partials/header %>
+        <% console.log(comment) %>
+    <div class="container">
+        <h1>Editar Comentario!</h1>
+        <!-- Formulario  edit Producto  -->
+        <form  method="POST" action="?_method=PUT">
+            
+            <div class="form-group">
+                <label for="commentId">Comentario:</label>
+                <input type="text" class="form-control" id="commentId" name="commentBody" value="<%= comment.body %>">
+            </div>
+            <button type="submit" class="btn btn-primary">Editar comentario!</button>
+        </form>
+     <% include Partials/footer %>
+    </div>
+    </div>
+    <!-- thumbnail fin -->
+    <script type="text/javascript" src="javascripts/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="javascripts/bootstrap.js"></script>
+</body>
+
+</html>

@@ -28,7 +28,7 @@ middleware.productOwner=function(req, res , next){
                                                 }
                                                 
 
-middleware.commentOwnership=function(req,res,next){
+middleware.commentOwner=function(req,res,next){
   if(req.isAuthenticated()){
     Comment.findById(req.params.c_id, function(err, comment){
 

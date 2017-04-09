@@ -4,6 +4,16 @@ var Product= require('../models/product');
 var Comment= require('../models/comment')
 var middleware= require("../middleware/index")
 
+router.get("/:c_id" , middleware.isLoggedIn, middleware.commentOwner , function(req ,res){
+  Comment.findById(req.params.c_id).exec(function(err, comment){
+    if(err){
+      res.send("error")
+    }else{
+      res.render("editComments", {comment:comment})
+    }
+  })
+})
+
 router.post("/", middleware.isLoggedIn, function(req, res){
       var author={
         id:req.user._id,
@@ -42,6 +52,30 @@ console.log(req.params.c_id)
     }
   })
  })
+
+//modificar comments
+
+router.put( "/:c_id" , middleware.commentOwner, function(req, res){
+    var comment={}
+  // var product={}
+  //  product.nameProduct=req.body.nameProduct
+  //  product.descriptionProduct=req.body.descriptionProduct
+  //  product.price=Number(req.body.price)
+  //  product.urlImageProduct=req.body.urlImageProduct
+  //  console.log(req.params.id)
+  //  console.log(product)
+ comment.body = req.body.commentBody
+
+  Comment.findByIdAndUpdate(req.params.c_id, comment , function(err){
+    if(err){
+      res.render("error")
+    }else{
+      res.redirect("/products/"+req.params.id)
+    }
+  })
+})
+  
+
 
 
 

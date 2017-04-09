@@ -53,8 +53,11 @@
                  <%}else{ %>
              <% if(currentUser.username === product.comment[i].author.username ){ %>
              <form  action="/products/<%= product.id %>/comments/<%= product.comment[i].id %>/?_method=DELETE" method="POST" >
-             <button class="btn btn-danger" type="submit">borrar </button>
+             <button class="btn btn-danger" type="submit">Borrar </button>
              </form>         
+             <% } %>
+             <% if(currentUser.username === product.comment[i].author.username ){ %>
+             <a href="/products/<%= product.id %>/comments/<%= product.comment[i].id%>" class="btn btn-warning">Editar</a> 
              <% } %>
              <% } %>
             <div class="thumbnail">

@@ -42,8 +42,6 @@ router.get("/:id/edit", function(req, res){
 })
 
 router.put( "/:id" , middleware.productOwner, function(req, res){
-  
-  //Por lo visto todos juntos no se puede
   var product={}
    product.nameProduct=req.body.nameProduct
    product.descriptionProduct=req.body.descriptionProduct
