@@ -72,18 +72,18 @@
                                                 <% } %>
                                                     <% if(currentUser.username === product.comment[i].author.username ){ %>
                                                         <a href="/products/<%= product.id %>/comments/<%= product.comment[i].id%>" class="btn btn-warning">Editar</a>
-                                                        <% } %>
                                         </div>
                                         <% } %>
-                                            <div class="thumbnail">
-                                                <h4>de:
-                                                    <%= product.comment[i].author.username %>
-                                                        <h4>
-                                                            <p>
-                                                                <%= product.comment[i].body %>
-                                                            </p>
-                                            </div>
                                             <% } %>
+                                                <div class="thumbnail">
+                                                    <h4>de:
+                                                        <%= product.comment[i].author.username %>
+                                                            <h4>
+                                                                <p>
+                                                                    <%= product.comment[i].body %>
+                                                                </p>
+                                                
+                                                <% } %>
 
             </div>
         </div>
