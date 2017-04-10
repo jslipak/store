@@ -61,6 +61,7 @@
              <form  action="/products/<%= product.id %>/comments/<%= product.comment[i].id %>/?_method=DELETE" method="POST" >
              <button class="btn btn-danger" type="submit">Borrar </button>
              </form>         
+            </div>
              <% } %>
              <% if(currentUser.username === product.comment[i].author.username ){ %>
              <a href="/products/<%= product.id %>/comments/<%= product.comment[i].id%>" class="btn btn-warning">Editar</a> 
@@ -71,7 +72,6 @@
            <p> <%= product.comment[i].body %></p>
             </div>   
             <% } %>
-            </div>
             </div>
                 
             
