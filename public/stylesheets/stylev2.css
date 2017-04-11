@@ -1,6 +1,8 @@
-.cssstyle.thumbnail {
-    height: 70vh;
+body {
+    background-image: url('/images/backGround.jpg');    
+   
 }
+
 input {
     width:40%;
     text-align: center;
@@ -15,6 +17,7 @@ input {
 
 .thumbnail{
     text-align: center;
+    height: 74vh;
 }
 
 .thumbnail a>img, .thumbnail>img {
@@ -23,11 +26,12 @@ input {
 }
 
 
-#footer{
+.panel-footer{
   margin: 20px 0 0;
   padding-top: 15px;
   text-align: center;
-  color: #ddd
+  background-color: #3D3B30;
+  color : white;
 }
 
 #social-media a{
@@ -55,3 +59,33 @@ cssstyle.thumbnail {
     height: 30%;
     width: 90%;
 }
+.navbar {
+    background-color: #3D3B30;
+    /*color : white;*/
+    }
+
+.navbar-default {
+    color: white;
+}
+
+.navbar-default a {
+    color: white;
+} 
+
+
+#brand , #addP  {
+    color:white;
+}
+
+#brand:hover, #addP:hover{
+    color:Green;
+}
+
+.navbar-default .navbar-nav>li>a {
+    color: white;
+}
+
+.navbar-default .navbar-nav>li>a:hover {
+    color: green;
+}
+
