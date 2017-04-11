@@ -44,6 +44,7 @@
 
                     <% if (!currentUser) { %>
                         <p> Para Hacer comentarios , necesitas Logearte! </p>
+
                         <% }else { %>
                             <div class="btn-toolbar" role="toolbar">
                                 <form action="/products/<%= product.id %>/comments" method="POST">
@@ -54,8 +55,8 @@
                                     <button type="submit" class="btn btn-primary">Envie su comentario! </button>
                                 </form>
                             </div>
-                </div>
                 <% } %>
+                </div>
 
                     <h2>Comentarios
                         <h2>
